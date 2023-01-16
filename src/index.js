@@ -1,21 +1,27 @@
+import {createStore} from "redux";
+
 const add = document.getElementById('add');
 const minus = document.getElementById('minus');
 const number = document.getElementById('number');
 
-let count = 0;
-number.innerText = count;
+const setReducer = (count = 0,action) =>{
+    if(action.type === 'Add'){
+        return count + 1;
+    } else if(action.type === 'Mod'){
+        return count - 1;
+    } else return count;
+};
+const setCountStore = createStore(setReducer);
+const setSubscribe = () =>{
+    number.innerText = setCountStore.getState();
+}
+setCountStore.subscribe(setSubscribe);
+const btnPlusHandler = () =>{
+    setCountStore.dispatch({type:'Add'})
+}
+const btnMinusHandler = () =>{
+    setCountStore.dispatch({type:'Mod'})
+}
 
-const updateNumber = () =>{
-    number.innerText = count;
-}
-const btnPlusHandle = () =>{
-    count = count + 1;
-    updateNumber();
-}
-const btnMinusHandle = () =>{
-    count = count - 1;
-    updateNumber();
-}
-
-add.addEventListener('click', btnPlusHandle);
-minus.addEventListener('click', btnMinusHandle);
+add.addEventListener('click', btnPlusHandler);
+minus.addEventListener('click', btnMinusHandler);
