@@ -1,4 +1,4 @@
-# Redux Study
+# Redux Study(Vanilla)
 1. 리덕스를 바닐라 js를 이용하여 사용하는 이유를 배운다.
 2. 리액트를 써서 리덕스를 사용한다.
 
