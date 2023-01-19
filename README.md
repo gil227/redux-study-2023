@@ -163,3 +163,5 @@ const onSubmit = (e) =>{
 
 getForm.addEventListener('submit',onSubmit);
 ```
+
+# Redux Study(React)
