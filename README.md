@@ -91,7 +91,7 @@ add.addEventListener('click', btnPlusHandler);
 minus.addEventListener('click', btnMinusHandler);
 ```
 
-# 2. TODO List 생성과 삭제 (2023.1.18)
+# TODO List 생성과 삭제 (2023.1.18)
 dispatch를 이용해서 TODO를 생성하는것과 삭제를 만든다.
 여기서 단순히 html상에서 만들고 삭제되는것은 데이터가 남지 않으므로
 배열을 이용해서 데이터 스택을 만든다.

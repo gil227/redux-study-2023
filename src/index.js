@@ -19,12 +19,14 @@ const setReducer = (state = [],action) =>{
             //push 하지말고(string 요소로 넣지말고)
             //무조건 object(Array) 요소로 만들자.!
             //스프레드 문법으로 state를 복사 하지 않으면 각각의 Array로 저장됨.(state로 데이터 스택을 쌓을수있다.)
-            return [{val:action.val, id:Date.now()},...state]
+            const setCreateObj = {val:action.val, id:Date.now()};
+            return [setCreateObj,...state]
         case MOD:
             //filter 속성은 참인 값으로 구성된 새로운 배열을 생성한다.
             //이걸 이용하여 state에 존재하는 배열에서 해당하는(지우고싶은) 요소를 빼낸다.
             //그리고 그 뺴낸요소로 배열을 만드는데 필요 없는 배열이다.
-            return state.filter(dataItem => dataItem.id !== action.id)
+            const setDeleteObj = state.filter(dataItem => dataItem.id !== action.id);
+            return setDeleteObj;
         default : return state;
     }
 };
