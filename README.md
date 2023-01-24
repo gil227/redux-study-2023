@@ -165,3 +165,69 @@ getForm.addEventListener('submit',onSubmit);
 ```
 
 # Redux Study(React)
+
+## 1. mapStateToProps
+store를 만들어서(돔과 동일) 컴포넌트 아래에 export 앞에 커넥트를 이용해서 스토어의 state(배열)를 가져온다
+
+<br>
+
+## `1. store.js(ts)`
+```js
+import {createStore} from "redux";
+
+const ADD = "ADD";
+const DEL = "DELETE";
+
+export const addItem = (txt) =>{
+    return {
+        type: ADD,
+        txt
+    }
+}
+export const delItem = (id) =>{
+    return {
+        type: ADD,
+        id
+    }
+}
+
+const reducer = (state =[], action) =>{
+    switch (action.type){
+        case ADD :
+            return [{txt:action.txt, id:Date.now()},...state];
+        case DEL :
+            return state.filter(item => item !== action.id);
+        default : return state;
+    }
+}
+const store = createStore(reducer);
+
+export default store;
+```
+
+<br>
+
+## `2. index.js(ts)`
+
+```js
+import {Provider} from "react-redux";
+
+//리턴에 Provider 생성 후 스토어 연결
+<Provider store={store}>
+    <App/>
+</Provider>
+```
+
+<br>
+
+## `3. 연결하는 컴포넌트`
+
+```js
+function mapStateToProps (state) {
+    return {state}
+}
+//Home 컴포넌트에 연결
+export default connect(mapStateToProps)(Home);
+```
+
+>파일을 모두 생성한 후 컴포넌트에 state를 props로 할당한다.
