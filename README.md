@@ -231,3 +231,22 @@ export default connect(mapStateToProps)(Home);
 ```
 
 >파일을 모두 생성한 후 컴포넌트에 state를 props로 할당한다.
+ 
+<br>
+
+## `4. dispatch`
+mapDispatchToProps를 만들어서 dispatch를 Home 컴퍼넌트에 전달한다.
+
+```js
+function mapStateToProps (state) {
+    return {state:state}
+}
+
+function mapDispatchToProps(dispatch){
+    return {
+        addItem:(text) => dispatch(actionCreators.addItem(text))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps) (Home);
+```

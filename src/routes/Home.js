@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {connect} from "react-redux";
 import {actionCreators} from "./store";
-const Home = ({state,dispatch}) => {
+const Home = ({state,addItem}) => {
     const [txt,setTxt] = useState("");
     function onChange(e){
         setTxt(e.target.value);
@@ -9,7 +9,7 @@ const Home = ({state,dispatch}) => {
     function onSubmit(e){
         e.preventDefault();
         setTxt("");
-        dispatch(addItem(text))
+        addItem(txt)
     }
     return (
         <>
@@ -18,7 +18,7 @@ const Home = ({state,dispatch}) => {
                 <input type="text" value={txt} onChange={onChange}/>
                 <button>Add</button>
             </form>
-            <ul></ul>
+            <ul>{JSON.stringify(state)}</ul>
         </>
     )
 }
