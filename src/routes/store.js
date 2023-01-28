@@ -11,7 +11,7 @@ const addItem = (txt) =>{
 }
 const delItem = (id) =>{
     return {
-        type: ADD,
+        type: DEL,
         id
     }
 }
@@ -21,7 +21,7 @@ const reducer = (state =[], action) =>{
         case ADD :
             return [{txt:action.txt, id:Date.now()},...state];
         case DEL :
-            return state.filter(item => item !== action.id);
+            return state.filter(item => item.id !== action.id);
         default : return state;
     }
 }

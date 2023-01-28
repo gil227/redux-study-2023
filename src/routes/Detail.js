@@ -1,8 +1,18 @@
-import React from 'react';
-function Detail(){
-    return (
-        <h1>detail!</h1>
-    )
+import React from "react";
+import { connect } from "react-redux";
+function Detail({ id }) {
+  return <h1>{id}</h1>;
 }
 
-export default Detail;
+function mapStateToProps(state, ownProps) {
+  const {
+    match: {
+      params: { id },
+    },
+  } = ownProps;
+  return {
+    id: id,
+  };
+}
+
+export default connect(mapStateToProps)(Detail);
